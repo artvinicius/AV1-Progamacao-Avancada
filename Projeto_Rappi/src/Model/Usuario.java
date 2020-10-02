@@ -1,15 +1,15 @@
 package Model;
 
-public class Usuario {
+public class Usuario extends Classificacao{
 	private String nome;
 	private String ultNome;
 	private String numCelular;
 	private String genero;
 	private int id;
 	private String email;
-	private Classificacao classificacao;
 
-	Usuario(String nome, String ultNome, String numCelular, String genero, int id, String email,
+
+	public Usuario(String nome, String ultNome, String numCelular, String genero, int id, String email,
 			Classificacao classificacao) {
 		this.nome = nome;
 		this.ultNome = ultNome;
@@ -17,10 +17,17 @@ public class Usuario {
 		this.genero = genero;
 		this.id = id;
 		this.email = email;
-		this.classificacao = classificacao;
+		
 	}
-
-	Usuario() {
+	
+	public Usuario(String nivel, int pontuacao) {
+		super();
+		this.setNivel(nivel);
+		this.setPontuacao(pontuacao);
+	}
+	
+	public Usuario() {
+		
 	}
 
 	public String getNome() {
@@ -71,30 +78,11 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public Classificacao getClassificacao() {
-		return classificacao;
+
+	@Override
+	public String toString() {
+		return "Usuario [nome=" + nome + ", ultNome=" + ultNome + ", numCelular=" + numCelular + ", genero=" + genero
+				+ ", id=" + id + ", email=" + email +"]";
 	}
-
-	public void setClassificacao(Classificacao classificacao) {
-		this.classificacao = classificacao;
-	}
-
-	public static class Classificacao {
-		private String nivel;
-
-		Classificacao() {
-
-		}
-
-		public String upgrade() {
-
-			return "SUBINDO";
-		}
-
-		public String downgrade() {
-
-			return "DESCENDO";
-		}
-
-	}
+	
 }
