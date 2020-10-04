@@ -10,11 +10,9 @@ public class Menu {
 		Classificacao nivel = new Classificacao();
 		Operacoes op = new Operacoes();
 //		Usuario user1 =  new Usuario("Lucas", "Eduardo", "XXXX", "masculino", 12231, "XXXXX", nivel);
-//		Compra compra =  new Compra();
+		Compra compra =  new Compra();
 //		
-//		compra.compra();
-		
-		op.menu();
+		compra.compra();
 		
 	}
 
