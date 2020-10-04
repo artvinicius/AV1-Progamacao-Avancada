@@ -17,7 +17,6 @@ public class Usuario extends Classificacao{
 		this.genero = genero;
 		this.id = id;
 		this.email = email;
-		
 	}
 	
 	public Usuario(String nivel, int pontuacao) {
