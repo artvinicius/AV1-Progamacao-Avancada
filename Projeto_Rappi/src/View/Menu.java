@@ -8,12 +8,13 @@ public class Menu {
 	public static void main(String[] args) {
 		
 		Classificacao nivel = new Classificacao();
-		Usuario user1 =  new Usuario("Lucas", "Eduardo", "XXXX", "masculino", 12231, "XXXXX", nivel);
-		Compra compra =  new Compra();
+		Operacoes op = new Operacoes();
+//		Usuario user1 =  new Usuario("Lucas", "Eduardo", "XXXX", "masculino", 12231, "XXXXX", nivel);
+//		Compra compra =  new Compra();
+//		
+//		compra.compra();
 		
-//		System.out.println(user1.toString());
-//		System.out.println(nivel.toString());
-		compra.compra();
+		op.menu();
 		
 	}
 
