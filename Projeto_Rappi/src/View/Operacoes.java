@@ -1,20 +1,25 @@
 package View;
 
+import java.io.IOException;
 import java.util.Scanner;
+
+import Control.AdicionarUsuario;
+import Model.Classificacao;
+import Model.Usuario;
 
 public class Operacoes {
 	
 	Scanner T = new Scanner(System.in);
 	
-	public void menu() {
+	public void menu() throws IOException {
 		String value;
 		boolean resultado = false;
-		while(resultado) {
+		while(!resultado) {
 			System.out.println("||====================================||");
-			System.out.println("|| [1] - Criar Conta                  ||");
-			System.out.println("|| [2] - Logar conta existente        ||");
-			System.out.println("|| [3] - Criar Conta                  ||");
-			System.out.println("|| [0] - Encerrar                     ||");
+			System.out.println("||       [1] - Criar Conta            ||");
+			System.out.println("||       [2] - Logar conta existente  ||");
+			System.out.println("||       [3] - Criar Conta            ||");
+			System.out.println("||       [0] - Encerrar               ||");
 			System.out.println("||====================================||");
 			System.out.println("");
 			System.out.print("Digite uma opção: ");
@@ -29,17 +34,17 @@ public class Operacoes {
 					resultado = true;
 				} else {
 					System.out.println("");
-					System.out.println("----------------------------");
-					System.out.println("------Número Inválido!------");
-					System.out.println("Digite um número entre 0 e 4");
-					System.out.println("----------------------------");
+					System.out.println("||---------------------------------||");
+					System.out.println("||---------Número Inválido!--------||");
+					System.out.println("||- Digite um número entre 0 e 4 - ||");
+					System.out.println("||---------------------------------||");
 					System.out.println("");
 				}
 			}
 			
 		}
 	}
-	public void opcoesMenu(int opcao) {
+	public void opcoesMenu(int opcao) throws IOException {
 		switch (opcao) {
 		case 1:
 			exibirMenuAdicionar();
@@ -49,8 +54,7 @@ public class Operacoes {
 
 			break;
 		case 3:
-			// exibirEdicaoDeLivro();
-			// menu();
+
 			break;
 		case 4:
 			
@@ -65,7 +69,7 @@ public class Operacoes {
 
 	}
 	
-	public void exibirMenuAdicionar() {
+	public void exibirMenuAdicionar() throws IOException {
 
 		String value;
 		boolean resultado = false;
@@ -74,39 +78,50 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("|| [1] - Adicionar Nome               ||");
-			System.out.println("|| [2] - Adicionar Autor              ||");
-			System.out.println("|| [3] - Adicionar Editora            ||");
-			System.out.println("|| [4] - Tipo do Livro                ||");
-			System.out.println("|| [5] - Salvar Livro                 ||");
+			System.out.println("||       [1] - Avançar                ||");
+			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
-			System.out.print("Qual campo você deseja adicionar?: ");
+			System.out.print("Escolha uma opção: ");
 			value = T.nextLine();
 
-			
 			boolean validacao = true;
 			
 			if (validacao == true) {
 				opcaoAdicionar = Integer.parseInt(value);
-				if (opcaoAdicionar >= 1 && opcaoAdicionar <= 8) {
-//					menuAdicionar(opcaoAdicionar);
+				if (opcaoAdicionar == 1) {
+					addUsuario();
+//					System.out.println("sim");
 					resultado = true;
-				} else {
+				} else if(opcaoAdicionar == 2){
+					menu();
+					
+				}else {
 					System.out.println("");
-					System.out.println("----------------------------");
-					System.out.println("------Número Inválido!------");
-					System.out.println("Digite um número entre 1 e 8");
-					System.out.println("----------------------------");
+					System.out.println("||----------------------------------||");
+					System.out.println("||---------Número Inválido!---------||");
+					System.out.println("|| - Digite um número entre 0 e 2 - ||");
+					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
 			}
 		}
 	}
 	private void sairDoSistema() {
-		System.out.println("------------------");
-		System.out.println("Sistema Encerrado!");
-		System.out.println("------------------");
+		System.out.println("||--------------------||");
+		System.out.println("|| Sistema Encerrado! ||");
+		System.out.println("||--------------------||");
 		System.exit(0);
+	}
+	
+	private void addUsuario() throws IOException {
+		Classificacao nivel = new Classificacao();
+		Usuario usuarios[];
+		usuarios = new Usuario[2];
+		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", nivel);
+		AdicionarUsuario.serializarListaUsuario(usuarios);
+		System.out.println("Adicionado um usuario predefinido");
+		System.out.println("");
+		AdicionarUsuario.desserializarListaUsuario();
 	}
 
 }
