@@ -1,44 +1,35 @@
 package Control;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 import Model.Usuario;
 
 public class AdicionarUsuario {
 	
-	public static void desserializarListaUsuario() throws IOException {
-		for (int i = 0; i < 2; i++) {
-			try {										// Estou usando essa forma, pois o meu S.O é linux
-				FileInputStream fileIn = new FileInputStream("/home/lucas/Documentos/AV1-PA/usuarios"+(i+1)+".txt");
-				ObjectInputStream in = new ObjectInputStream(fileIn);
-				Usuario usuarios = (Usuario) in.readObject();
-				System.out.println("Dados dos Usuarios:");
-				System.out.println(usuarios.toString());
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-				{
-				}
-			}
-		}
+	public static void escreverArquivo(Usuario usuarios) throws IOException {
+		FileWriter arq = new FileWriter("/home/lucas/Documentos/AV1-PA/usuarios.txt");
+	    PrintWriter gravarArq = new PrintWriter(arq);
+	    
+		    gravarArq.print(usuarios);
+		    gravarArq.append("\n");
+		    arq.close();
 	}
 	
-	public static void serializarListaUsuario(Usuario usuarios[]) {
-		for (int i = 0; i < usuarios.length; i++) {
-			try {
-				ObjectOutputStream oS = new ObjectOutputStream(// Estou usando essa forma, pois o meu S.O é linux
-						new FileOutputStream("/home/lucas/Documentos/AV1-PA/usuarios"+(i+1)+".txt"));
-				oS.writeObject(usuarios[i]);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	public static void leitor(String path) throws IOException {
+		BufferedReader buffRead = new BufferedReader(new FileReader(path));
+		String linha = "";
+		while (true) {
+			if (linha != null) {
+				System.out.println(linha);
+			} else
+				break;
+			linha = buffRead.readLine();
 		}
+		buffRead.close();
 	}
 	
-	public static void escreverArquivo() {
-		
-	}
 }
