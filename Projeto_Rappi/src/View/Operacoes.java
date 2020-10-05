@@ -168,7 +168,7 @@ public class Operacoes {
 		Scanner T = new Scanner(System.in);
 		String nome = "", numCelular = "", texto = "";
 		
-		String path = "/home/lucas/Documentos/AV1-PA/usuarios.txt";
+		String path = "D:\\Projeto/usuarios.txt";
 
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
@@ -243,14 +243,14 @@ public class Operacoes {
 		String pagamento;
 		
 		System.out.println("");
-		System.out.print("O que você procura: ");
+		System.out.print("O que voc� procura: ");
 		value = T.nextLine();
 		
 		if(value.equals("pao")) {
-			System.out.println("Encontramos a loja do seu zé");
+			System.out.println("Encontramos a loja Banquete");
 			System.out.println("");
 			System.out.println("||============ CARDAPIO ============||");
-			System.out.println("||         [1] SUCOS                ||");
+			System.out.println("||         [1] SUCOS   R$5,00       ||");
 			System.out.println("||==================================||");
 			System.out.println("");
 			System.out.print("Escolha a sua opção: ");
