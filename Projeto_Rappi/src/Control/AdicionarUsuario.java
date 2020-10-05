@@ -15,9 +15,9 @@ public class AdicionarUsuario {
 			try {										// Estou usando essa forma, pois o meu S.O é linux
 				FileInputStream fileIn = new FileInputStream("/home/lucas/Documentos/AV1-PA/usuarios"+(i+1)+".txt");
 				ObjectInputStream in = new ObjectInputStream(fileIn);
-				Usuario users = (Usuario) in.readObject();
+				Usuario usuarios = (Usuario) in.readObject();
 				System.out.println("Dados dos Usuarios:");
-				System.out.println(users.toString());
+				System.out.println(usuarios.toString());
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 				{
@@ -36,5 +36,9 @@ public class AdicionarUsuario {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public static void escreverArquivo() {
+		
 	}
 }
