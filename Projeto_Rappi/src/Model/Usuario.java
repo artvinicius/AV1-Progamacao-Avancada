@@ -76,12 +76,10 @@ public class Usuario extends Classificacao{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
+	
 	@Override
 	public String toString() {
-		return "Usuario [nome=" + nome + ", ultNome=" + ultNome + ", numCelular=" + numCelular + ", genero=" + genero
-				+ ", id=" + id + ", email=" + email +"]";
+		return nome+","+ultNome+","+numCelular+","+genero+","+id+","+email+","+getNivel();
 	}
 	
 }
