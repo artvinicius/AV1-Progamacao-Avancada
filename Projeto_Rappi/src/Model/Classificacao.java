@@ -1,58 +1,34 @@
 package Model;
 
-public class Classificacao implements Nivel {
+public class Classificacao {
 
-	private String nivel;
-	private double pontuacao;
+	private static int pontuacao;
 
 	public Classificacao() {
-
-		this.nivel = "Bronze";
+		Classificacao.pontuacao = 0;
 	}
 
-	public double getPontuacao() {
+	public static int getPontuacao() {
 		return pontuacao;
 	}
 
-	public void setPontuacao(double pontuacao) {
-		this.pontuacao = pontuacao;
+	public void setPontuacao(int pontuacao) {
+		Classificacao.pontuacao = pontuacao;
 	}
-
-	public String getNivel() {
-		return nivel;
-	}
-
-	public void setNivel(String nivel) {
-		this.nivel = nivel;
-	}
-
-	@Override
-	public void BRONZE() {
-		if (pontuacao < 2000) {
-			System.out.println("BRONZE");
+	
+	public String elo(int pontuacao) {
+		if (pontuacao == 0 && pontuacao < 2000) {
+			return "BRONZE";
 		}
-	}
-
-	@Override
-	public void SILVER() {
 		if (pontuacao >= 2000 && pontuacao < 4000) {
-			System.out.println("SILVER");
+			return "SILVER";
 		}
-
-	}
-
-	@Override
-	public void GOLD() {
-		if (pontuacao >= 4000 && pontuacao < 10000) {
-			System.out.println("GOLD");
+		if (pontuacao >= 2000 && pontuacao < 4000) {
+			return "GOLD";
 		}
-	}
-
-	@Override
-	public void DIAMANTE() {
 		if (pontuacao >= 10000) {
-			System.out.println("DIAMANTE");
+			return "DIAMANTE";
 		}
+		return null;
 	}
-
 }
