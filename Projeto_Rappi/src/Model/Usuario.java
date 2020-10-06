@@ -7,21 +7,22 @@ public class Usuario extends Classificacao{
 	private String genero;
 	private int id;
 	private String email;
+	private String nivel;
 
 
 	public Usuario(String nome, String ultNome, String numCelular, String genero, int id, String email,
-			Classificacao classificacao) {
+			int classificacao, String nivel) {
 		this.nome = nome;
 		this.ultNome = ultNome;
 		this.numCelular = numCelular;
 		this.genero = genero;
 		this.id = id;
 		this.email = email;
+		this.nivel = nivel;
 	}
 	
-	public Usuario(String nivel, int pontuacao) {
+	public Usuario(int pontuacao) {
 		super();
-		this.setNivel(nivel);
 		this.setPontuacao(pontuacao);
 	}
 	
@@ -77,9 +78,19 @@ public class Usuario extends Classificacao{
 		this.email = email;
 	}
 	
+	
+	public String getNivel() {
+		return nivel;
+	}
+	
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+	
+	
 	@Override
 	public String toString() {
-		return nome+","+ultNome+","+numCelular+","+genero+","+id+","+email+","+getNivel();
+		return nome+","+ultNome+","+numCelular+","+genero+","+id+","+email+","+Classificacao.getPontuacao()+","+nivel;
 	}
 	
 }
