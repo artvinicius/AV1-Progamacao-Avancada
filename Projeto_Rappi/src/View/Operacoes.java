@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import Control.AdicionarUsuario;
+import Control.Compra;
 import Model.Classificacao;
 import Model.Pagamento;
 import Model.Usuario;
@@ -154,11 +155,10 @@ public class Operacoes {
 	}
 
 	private void addUsuario() throws IOException {
-		Classificacao nivel = new Classificacao();
 		Usuario usuarios[];
 		usuarios = new Usuario[2];
-		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", nivel);
-		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", nivel);
+		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", 10000, "DIAMANTE");
+		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", Classificacao.getPontuacao(),"BRONZE");
 		AdicionarUsuario.escreverArquivo(usuarios[0]);
 		System.out.println("Adicionado um usuario predefinido");
 		System.out.println("");
@@ -168,7 +168,7 @@ public class Operacoes {
 		Scanner T = new Scanner(System.in);
 		String nome = "", numCelular = "", texto = "";
 		
-		String path = "D:\\Projeto/usuarios.txt";
+		String path = "/home/lucas/Documentos/AV1-PA/usuarios.txt";
 
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
@@ -198,7 +198,7 @@ public class Operacoes {
 		}
 	}
 	
-	public void exibirMenuPedido() {
+	public void exibirMenuPedido() throws IOException {
 		String value;
 		boolean resultado = false;
 		int opcaoAdicionar = 0;
@@ -236,14 +236,16 @@ public class Operacoes {
 		}
 	}
 	
-	public void fazerPedido() {
+	public void fazerPedido() throws IOException {
 		
+		Compra compra = new Compra();
+		Pagamento pag =  new Pagamento();
 		String value;
 		int opc = 0;
 		String pagamento;
 		
 		System.out.println("");
-		System.out.print("O que voc� procura: ");
+		System.out.print("O que voc� procura: ");
 		value = T.nextLine();
 		
 		if(value.equals("pao")) {
@@ -256,8 +258,10 @@ public class Operacoes {
 			System.out.print("Escolha a sua opção: ");
 			opc = T.nextInt();
 			if(opc == 1) {
-				System.out.println("Escolha a forma de pagamento: ");
-				pagamento = T.next();
+				System.out.print("Escolha a forma de pagamento: ");
+//				pag.setModo(T.next());
+				compra.compra(T.next());
+				
 			}
 			
 		}
