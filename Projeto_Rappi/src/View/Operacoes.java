@@ -26,7 +26,7 @@ public class Operacoes {
 			System.out.println("||       [0] - Encerrar               ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Digite uma opção: ");
+			System.out.print("Digite uma opcao: ");
 			value = T.nextLine();
 
 			boolean validacao = true;
@@ -39,8 +39,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||---------------------------------||");
-					System.out.println("||---------Número Inválido!--------||");
-					System.out.println("||- Digite um número entre 0 e 2 - ||");
+					System.out.println("||---------Nï¿½mero Invalido!--------||");
+					System.out.println("||- Digite um numero entre 0 e 2 - ||");
 					System.out.println("||---------------------------------||");
 					System.out.println("");
 				}
@@ -76,11 +76,11 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("||       [1] - Avançar                ||");
+			System.out.println("||       [1] - Avancar                ||");
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opções: ");
+			System.out.print("Escolha uma opï¿½ï¿½es: ");
 			value = T.nextLine();
 			boolean validacao = true;
 			if (validacao == true) {
@@ -94,8 +94,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------Número Inválido!---------||");
-					System.out.println("|| - Digite um número entre 0 e 2 - ||");
+					System.out.println("||---------Nï¿½mero Invalido!---------||");
+					System.out.println("|| - Digite um numero entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -112,11 +112,11 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("||       [1] - Avançar                ||");
+			System.out.println("||       [1] - Avanï¿½ar                ||");
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opções: "); 
+			System.out.print("Escolha uma opcoes: "); 
 			value = T.nextLine();
 
 			boolean validacao = true;
@@ -132,8 +132,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------Número Inválido!---------||");
-					System.out.println("|| - Digite um número entre 0 e 2 - ||");
+					System.out.println("||---------Nï¿½mero Invï¿½lido!---------||");
+					System.out.println("|| - Digite um numero entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -206,7 +206,7 @@ public class Operacoes {
 			System.out.println("||       [3] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opção: ");
+			System.out.print("Escolha uma opcao: ");
 			value = T.nextLine();
 
 			boolean validacao = true;
@@ -222,8 +222,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------Número Invalido!---------||");
-					System.out.println("|| - Digite um número entre 0 e 2 - ||");
+					System.out.println("||---------Numero Invalido!---------||");
+					System.out.println("|| - Digite um numero entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -234,13 +234,11 @@ public class Operacoes {
 	public void fazerPedido() throws IOException {
 
 		Compra compra = new Compra();
-//		Pagamento pag = new Pagamento();
 		String value;
 		int opc = 0;
-//		String pagamento;
-
+		
 		System.out.println("");
-		System.out.print("O que você procura?: ");
+		System.out.print("O que vocï¿½ procura?: ");
 		value = T.nextLine();
 
 		if (value.equals("pao")) {
@@ -250,11 +248,10 @@ public class Operacoes {
 			System.out.println("||         [1] SUCOS   R$5,00       ||");
 			System.out.println("||==================================||");
 			System.out.println("");
-			System.out.print("Escolha a sua opção: ");
+			System.out.print("Escolha a sua opcao: ");
 			opc = T.nextInt();
 			if (opc == 1) {
 				System.out.print("Escolha a forma de pagamento: ");
-//				pag.setModo(T.next());
 				compra.compra(T.next());
 				
 
