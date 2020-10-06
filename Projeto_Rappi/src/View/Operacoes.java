@@ -8,12 +8,11 @@ import java.util.Scanner;
 import Control.AdicionarUsuario;
 import Control.Compra;
 import Model.Classificacao;
-import Model.Pagamento;
 import Model.Usuario;
 
 public class Operacoes {
 
-	Scanner T = new Scanner(System.in);
+	static Scanner T = new Scanner(System.in);
 
 	public void menu() throws IOException {
 		String value;
@@ -39,7 +38,7 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||---------------------------------||");
-					System.out.println("||---------N�mero Invalido!--------||");
+					System.out.println("||---------Numero Invalido!--------||");
 					System.out.println("||- Digite um numero entre 0 e 2 - ||");
 					System.out.println("||---------------------------------||");
 					System.out.println("");
@@ -80,7 +79,7 @@ public class Operacoes {
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma op��es: ");
+			System.out.print("Escolha uma opcoes: ");
 			value = T.nextLine();
 			boolean validacao = true;
 			if (validacao == true) {
@@ -112,7 +111,7 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("||       [1] - Avan�ar                ||");
+			System.out.println("||       [1] - Avancar                ||");
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
@@ -132,7 +131,7 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------N�mero Inv�lido!---------||");
+					System.out.println("||---------Numero Invalido!---------||");
 					System.out.println("|| - Digite um numero entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
@@ -151,20 +150,31 @@ public class Operacoes {
 	private void addUsuario() throws IOException {
 		Usuario usuarios[];
 		usuarios = new Usuario[2];
-		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", 10000, "DIAMANTE");
-		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", Classificacao.getPontuacao(),
-				"BRONZE");
+		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", 0);
+		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", Classificacao.getPontuacao());
 		AdicionarUsuario.escreverArquivo(usuarios[0]);
 		System.out.println("Adicionado um usuario predefinido");
 		System.out.println("");
+	}
+	
+	public static void atualizarDados(Usuario usuario) throws IOException {
+		AdicionarUsuario.escreverArquivo(usuario);
 	}
 
 	public void login() throws IOException {
 		Scanner T = new Scanner(System.in);
 		String nome = "", numCelular = "", texto = "";
+		String path = "";
+		String so = System.getProperty("os.name"); 
+		
+		if(so.equals("Linux")) {
+			path = "/home/lucas/Documentos/AV1-PA/usuarios.txt";
+		}else {
+			path = "D:\\Projeto/usuarios.txt";
+		}
 
-		String path = "D:\\Projeto/usuarios.txt";
-
+		System.out.println(System.getProperty("os.name"));
+		
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
 		while (true) {
@@ -203,7 +213,8 @@ public class Operacoes {
 			System.out.println("||====================================||");
 			System.out.println("||       [1] - Realizar Busca         ||");
 			System.out.println("||       [2] - Carrinho de compras    ||");
-			System.out.println("||       [3] - Voltar                 ||");
+			System.out.println("||       [3] - Perfil                 ||");
+			System.out.println("||       [4] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
 			System.out.print("Escolha uma opcao: ");
@@ -218,12 +229,13 @@ public class Operacoes {
 					resultado = true;
 				} else if (opcaoAdicionar == 2) {
 					carrinho();
-
+				} else if(opcaoAdicionar == 3) {
+					menuLogado();
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
 					System.out.println("||---------Numero Invalido!---------||");
-					System.out.println("|| - Digite um numero entre 0 e 2 - ||");
+					System.out.println("|| - Digite um numero entre 0 e 4 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -238,7 +250,7 @@ public class Operacoes {
 		int opc = 0;
 		
 		System.out.println("");
-		System.out.print("O que voc� procura?: ");
+		System.out.print("O que voce procura?: ");
 		value = T.nextLine();
 
 		if (value.equals("pao")) {
@@ -253,7 +265,6 @@ public class Operacoes {
 			if (opc == 1) {
 				System.out.print("Escolha a forma de pagamento: ");
 				compra.compra(T.next());
-				
 
 			}
 
@@ -262,6 +273,36 @@ public class Operacoes {
 
 	public void carrinho() {
 
+	}
+	
+	public static void menuLogado() {
+		String value;
+		boolean resultado = false;
+		int opcaoAdicionar = 0;
+		Usuario user = new Usuario();
+
+		while (!resultado) {
+			System.out.println("");
+			System.out.println("||====================================||");
+			System.out.println("||       [1] - Verificar pontos       ||");
+			System.out.println("||       [2] - Editar perfil          ||");
+			System.out.println("||       [3] - Voltar                 ||");
+			System.out.println("||====================================||");
+			System.out.println("");
+			System.out.print("Escolha uma opcao: ");
+			value = T.nextLine();
+			switch (value) {
+			case "1": {
+//				AdicionarUsuario.leitor(path)
+				System.out.println("");
+				System.out.println("||================== PONTUACAO ATUAL ===================||");
+				System.out.println("|| "+user.getNome()+" tem o total de :"+user.getPontuacao()+" ||");
+				System.out.println("||======================================================||");
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + value);
+			}
+		}
 	}
 
 }
