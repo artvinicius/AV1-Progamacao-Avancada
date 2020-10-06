@@ -22,25 +22,25 @@ public class Operacoes {
 			System.out.println("||====================================||");
 			System.out.println("||       [1] - Criar Conta            ||");
 			System.out.println("||       [2] - Logar conta existente  ||");
-			System.out.println("||       [3] - Criar Conta            ||");
+			System.out.println("||                                    ||");
 			System.out.println("||       [0] - Encerrar               ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Digite uma opÃ§Ã£o: ");
+			System.out.print("Digite uma opção: ");
 			value = T.nextLine();
 
 			boolean validacao = true;
 
 			if (validacao) {
 				int opcao = Integer.parseInt(value);
-				if (opcao >= 0 && opcao <= 3) {
+				if (opcao >= 0 && opcao <= 2) {
 					opcoesMenu(opcao);
 					resultado = true;
 				} else {
 					System.out.println("");
 					System.out.println("||---------------------------------||");
-					System.out.println("||---------NÃºmero InvÃ¡lido!--------||");
-					System.out.println("||- Digite um nÃºmero entre 0 e 4 - ||");
+					System.out.println("||---------Número Inválido!--------||");
+					System.out.println("||- Digite um número entre 0 e 2 - ||");
 					System.out.println("||---------------------------------||");
 					System.out.println("");
 				}
@@ -56,12 +56,6 @@ public class Operacoes {
 			break;
 		case 2:
 			exibirMenuLogin();
-
-			break;
-		case 3:
-
-			break;
-		case 4:
 
 			break;
 		case 0:
@@ -82,11 +76,11 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("||       [1] - AvanÃ§ar                ||");
+			System.out.println("||       [1] - Avançar                ||");
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opÃ§Ã£o: ");
+			System.out.print("Escolha uma opções: ");
 			value = T.nextLine();
 			boolean validacao = true;
 			if (validacao == true) {
@@ -100,8 +94,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------NÃºmero InvÃ¡lido!---------||");
-					System.out.println("|| - Digite um nÃºmero entre 0 e 2 - ||");
+					System.out.println("||---------Número Inválido!---------||");
+					System.out.println("|| - Digite um número entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -118,11 +112,11 @@ public class Operacoes {
 		while (!resultado) {
 			System.out.println("");
 			System.out.println("||====================================||");
-			System.out.println("||       [1] - AvanÃ§ar                ||");
+			System.out.println("||       [1] - Avançar                ||");
 			System.out.println("||       [2] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opÃ§Ã£o: ");
+			System.out.print("Escolha uma opções: "); 
 			value = T.nextLine();
 
 			boolean validacao = true;
@@ -138,8 +132,8 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------NÃºmero InvÃ¡lido!---------||");
-					System.out.println("|| - Digite um nÃºmero entre 0 e 2 - ||");
+					System.out.println("||---------Número Inválido!---------||");
+					System.out.println("|| - Digite um número entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
@@ -158,7 +152,8 @@ public class Operacoes {
 		Usuario usuarios[];
 		usuarios = new Usuario[2];
 		usuarios[0] = new Usuario("Lucas", "Eduardo", "XXXXX", "masculino", 1, "lucas@gmail.com", 10000, "DIAMANTE");
-		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", Classificacao.getPontuacao(),"BRONZE");
+		usuarios[1] = new Usuario("Ph", "Brito", "XXXXX", "masculino", 2, "Ph@gmail.com", Classificacao.getPontuacao(),
+				"BRONZE");
 		AdicionarUsuario.escreverArquivo(usuarios[0]);
 		System.out.println("Adicionado um usuario predefinido");
 		System.out.println("");
@@ -167,8 +162,8 @@ public class Operacoes {
 	public void login() throws IOException {
 		Scanner T = new Scanner(System.in);
 		String nome = "", numCelular = "", texto = "";
-		
-		String path = "/home/lucas/Documentos/AV1-PA/usuarios.txt";
+
+		String path = "D:\\Projeto/usuarios.txt";
 
 		BufferedReader buffRead = new BufferedReader(new FileReader(path));
 		String linha = "";
@@ -181,15 +176,15 @@ public class Operacoes {
 		}
 		buffRead.close();
 		String resultado[] = texto.split(",");
-		
+
 		System.out.print("Digite o nome do usuario: ");
 		nome = T.next();
 		System.out.print("Digite o numero de celular: ");
 		numCelular = T.next();
-		
-		if(nome.equals(resultado[0]) && numCelular.equals(resultado[2])) {
+
+		if (nome.equals(resultado[0]) && numCelular.equals(resultado[2])) {
 			exibirMenuPedido();
-		}else {
+		} else {
 			System.out.println("");
 			System.out.println("||--------------------||");
 			System.out.println("||   Login Errado!    ||");
@@ -197,7 +192,7 @@ public class Operacoes {
 			login();
 		}
 	}
-	
+
 	public void exibirMenuPedido() throws IOException {
 		String value;
 		boolean resultado = false;
@@ -211,11 +206,11 @@ public class Operacoes {
 			System.out.println("||       [3] - Voltar                 ||");
 			System.out.println("||====================================||");
 			System.out.println("");
-			System.out.print("Escolha uma opÃ§Ã£o: ");
+			System.out.print("Escolha uma opção: ");
 			value = T.nextLine();
-			
+
 			boolean validacao = true;
-			
+
 			if (validacao == true) {
 				opcaoAdicionar = Integer.parseInt(value);
 				if (opcaoAdicionar == 1) {
@@ -227,48 +222,49 @@ public class Operacoes {
 				} else {
 					System.out.println("");
 					System.out.println("||----------------------------------||");
-					System.out.println("||---------NÃºmero InvÃ¡lido!---------||");
-					System.out.println("|| - Digite um nÃºmero entre 0 e 2 - ||");
+					System.out.println("||---------Número Invalido!---------||");
+					System.out.println("|| - Digite um número entre 0 e 2 - ||");
 					System.out.println("||----------------------------------||");
 					System.out.println("");
 				}
 			}
 		}
 	}
-	
+
 	public void fazerPedido() throws IOException {
-		
+
 		Compra compra = new Compra();
-		Pagamento pag =  new Pagamento();
+//		Pagamento pag = new Pagamento();
 		String value;
 		int opc = 0;
-		String pagamento;
-		
+//		String pagamento;
+
 		System.out.println("");
-		System.out.print("O que vocï¿½ procura: ");
+		System.out.print("O que você procura?: ");
 		value = T.nextLine();
-		
-		if(value.equals("pao")) {
+
+		if (value.equals("pao")) {
 			System.out.println("Encontramos a loja Banquete");
 			System.out.println("");
 			System.out.println("||============ CARDAPIO ============||");
 			System.out.println("||         [1] SUCOS   R$5,00       ||");
 			System.out.println("||==================================||");
 			System.out.println("");
-			System.out.print("Escolha a sua opÃ§Ã£o: ");
+			System.out.print("Escolha a sua opção: ");
 			opc = T.nextInt();
-			if(opc == 1) {
+			if (opc == 1) {
 				System.out.print("Escolha a forma de pagamento: ");
 //				pag.setModo(T.next());
 				compra.compra(T.next());
 				
+
 			}
-			
+
 		}
 	}
-	
+
 	public void carrinho() {
-		
+
 	}
 
 }
