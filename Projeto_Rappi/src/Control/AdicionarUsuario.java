@@ -11,7 +11,7 @@ import Model.Usuario;
 public class AdicionarUsuario {
 	
 	public static void escreverArquivo(Usuario usuarios) throws IOException {
-		FileWriter arq = new FileWriter("D:\\Projeto/usuarios.txt");
+		FileWriter arq = new FileWriter("/home/lucas/Documentos/AV1-PA/usuarios.txt");
 	    PrintWriter gravarArq = new PrintWriter(arq);
 	    
 		    gravarArq.print(usuarios);
